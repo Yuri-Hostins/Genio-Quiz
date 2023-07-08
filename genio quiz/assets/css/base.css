@@ -1,20 +1,20 @@
 /* importando fontes do google */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-@import url("reset.css");
-@import url("conteudo/menu.css");
+@import url("reset.css"); /* Importando o arquivo CSS de reset para redefinir o estilo padrão do navegador */
+@import url("conteudo/menu.css"); /* Importando o arquivo CSS de estilo do menu */
 
 body {
-  font-family: 'Poppins', sans-serif;
-  color: #291f1a;
-  background-color: #000;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #b4aaaa;
+font-family: 'Poppins', sans-serif; /* Definindo a fonte Poppins como a fonte principal do texto */
+color: #291f1a; /* Definindo a cor do texto como marrom escuro */
+background-color: #000; /* Definindo a cor de fundo como preto */
+font-size: 16px; /* Definindo o tamanho da fonte como 16 pixels */
+line-height: 1.5; /* Definindo a altura da linha como 1.5 (espaçamento entre as linhas) */
+margin: 0; /* Removendo as margens externas */
+padding: 0; /* Removendo o preenchimento interno */
+text-align: center; /* Centralizando o conteúdo do texto horizontalmente */
+display: flex; /* Definindo o elemento body como um contêiner flexível */
+align-items: center; /* Alinhando os itens verticalmente ao centro */
+justify-content: center; /* Alinhando os itens horizontalmente ao centro */
+background: #807474; /* Definindo uma cor de fundo alternativa para o corpo */
 }

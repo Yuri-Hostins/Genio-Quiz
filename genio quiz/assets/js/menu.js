@@ -10,10 +10,10 @@ const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
 
+
 // criando um array e passando o número, perguntas, opções e respostas
 let questions = [
-  {
-    numb: 1,
+  { 
     question: "O que significa HTML?",
     answer: "Hyper Text Markup Language",
     options: [
@@ -24,7 +24,6 @@ let questions = [
     ],
   },
   {
-    numb: 2,
     question: "O que significa CSS?",
     answer: "Cascading Style Sheet",
     options: [
@@ -35,7 +34,6 @@ let questions = [
     ],
   },
   {
-    numb: 3,
     question: "O que significa PHP?",
     answer: "Hypertext Preprocessor",
     options: [
@@ -46,7 +44,6 @@ let questions = [
     ],
   },
   {
-    numb: 4,
     question: "O que significa SQL?",
     answer: "Structured Query Language",
     options: [
@@ -57,7 +54,6 @@ let questions = [
     ],
   },
   {
-    numb: 5,
     question: "O que significa XML?",
     answer: "extensible Markup Language",
     options: [
@@ -68,6 +64,7 @@ let questions = [
     ],
   },
 ];
+
 
 // se o botão startQuiz for clicado
 start_btn.onclick = () => {
@@ -155,7 +152,7 @@ function showQuetions(index) {
   // criando uma nova tag span e div para a pergunta e opção e passando o valor usando o índice do array
   let que_tag =
     "<span>" +
-    questions[index].numb +
+    (index + 1) +
     ". " +
     questions[index].question +
     "</span>";
@@ -231,7 +228,7 @@ function showResult() {
     // se o usuário acertar mais de 3 perguntas
     // criando uma nova tag span e passando o número de pontos do usuário e o número total de perguntas
     let scoreTag =
-      "<span>e parabéns! Você acertou <p>" +
+      "<span>Parabéns! Você acertou <p>" +
       userScore +
       "</p> de <p>" +
       questions.length +
@@ -240,7 +237,7 @@ function showResult() {
   } else if (userScore > 1) {
     // se o usuário acertar mais de 1 pergunta
     let scoreTag =
-      "<span>e legal! Você acertou <p>" +
+      "<span>Legal! Você acertou <p>" +
       userScore +
       "</p> de <p>" +
       questions.length +
@@ -249,7 +246,7 @@ function showResult() {
   } else {
     // se o usuário acertar menos de 1 pergunta
     let scoreTag =
-      "<span>e desculpe, você acertou apenas <p>" +
+      "<span>Desculpe, você acertou apenas <p>" +
       userScore +
       "</p> de <p>" +
       questions.length +
@@ -301,6 +298,50 @@ function startTimerLine(time) {
     }
   }
 }
+
+// Função para embaralhar o array de perguntas
+function shuffleQuestions(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// se o botão startQuiz for clicado
+start_btn.onclick = () => {
+  info_box.classList.add("activeInfo"); // mostrar info box
+};
+
+// se o botão continueQuiz for clicado
+continue_btn.onclick = () => {
+  info_box.classList.remove("activeInfo"); // esconder info box
+  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
+  shuffleQuestions(questions); // Embaralhar o array de perguntas
+  showQuetions(0); // chamando a função showQuestions
+  queCounter(1); // passando 1 parâmetro para queCounter
+  startTimer(15); // chamando a função startTimer
+  startTimerLine(0); // chamando a função startTimerLine
+};
+
+// se o botão restartQuiz for clicado
+restart_quiz.onclick = () => {
+  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
+  result_box.classList.remove("activeResult"); // esconder result box
+  timeValue = 15;
+  que_count = 0;
+  que_numb = 1;
+  userScore = 0;
+  widthValue = 0;
+  shuffleQuestions(questions); // Embaralhar o array de perguntas
+  showQuetions(que_count); // chamando a função showQuestions
+  queCounter(que_numb); // passando o valor que_numb para queCounter
+  clearInterval(counter); // limpar counter
+  clearInterval(counterLine); // limpar counterLine
+  startTimer(timeValue); // chamando a função startTimer
+  startTimerLine(widthValue); // chamando a função startTimerLine
+  timeText.textContent = "Tempo Restante"; // alterar o texto de timeText para Tempo Restante
+  next_btn.classList.remove("show"); // esconder o botão next
+};
 
 function queCounter(index) {
   // criando uma nova tag span e passando o número da pergunta e o número total de perguntas
