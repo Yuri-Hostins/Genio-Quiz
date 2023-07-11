@@ -1,8 +1,11 @@
 /* importando fontes do google */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
+@import url('https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css');
 @import url("reset.css"); /* Importando o arquivo CSS de reset para redefinir o estilo padrão do navegador */
+@import url("loading.css"); /* Importando o arquivo CSS de estilo do menu */
 @import url("conteudo/menu.css"); /* Importando o arquivo CSS de estilo do menu */
+@import url("conteudo/contato.css"); /* Importando o arquivo CSS de estilo do menu */
+
 
 body {
 font-family: 'Poppins', sans-serif; /* Definindo a fonte Poppins como a fonte principal do texto */

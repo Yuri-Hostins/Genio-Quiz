@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gênio Quiz</title>
     <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="shortcut icon" href="assets/img/favicon.png">
     <script defer src="assets/js/menu.js"></script>
+    <script defer src="assets/js/modal.js"></script>
+    <script defer src="assets/js/loading.js"></script>
     <!-- Fonte Incrível CDN Link para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   </head>
 
   <body>
+    <!-- Loader  -->
+
+    <section id="preloader">
+      <div class="inner">
+        <div class="loader"></div>
+        <div class="container--loader">
+          <div class="roda"></div>
+          <div class="roda"></div>
+        </div>
+        <div>
+          <h3 class="text-loader">Carregando...</h3>
+        </div>
+      </div>
+    </section>
+
+
     <!-- botão iniciar Quiz -->
     <section class="container-buttons">
       <h1>Bem-vindo ao Genio Quiz</h1>
@@ -18,20 +37,78 @@
         <button>Começar Quiz</button>
       </div>
       <div class="buttons-infos">
-        <button>Sobre-nós</button>
+        <button id="about_btn">Sobre-nós</button>
       </div>
       <div class="buttons-infos">
-        <button>Contato</button>
+        <button id="contact_btn">Contato</button>
       </div>
     </section>
+  
+    <div id="about_modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Sobre-nós</h2>
+        <div class="info">
+          <p>
+            O Gênio Quiz foi desenvolvido por Yuri Hostins e João Vitor.
+          </p>
+        </div>  
+        <div class="info">
+          <p>
+            Nosso objetivo é proporcionar uma experiência divertida e desafiadora para os jogadores, ao mesmo tempo em que incentivamos o aprendizado e o desenvolvimento de habilidades.
+          </p>
+        </div>
+        <div class="info">
+          <p>
+            Cada pergunta cuidadosamente elaborada no Gênio Quiz visa testar seus conhecimentos sobre nossa querida África
+          </p>
+        </div>
+        <div class="info">
+          <p>
+            Agradecemos a todos os jogadores que embarcam nesta jornada intelectual conosco e desejamos a todos boa sorte em sua busca pelo título de "Gênio do Quiz"!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact_modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Contato</h2>
+        <div class="container" id="contato">
+          <div class="container--linha">
+            <div class="linha"></div>
+          </div>
+          <div>
+            <h3 class="titulo-contato">Caso houver algum bug em nosso site ou se tiver alguma informação desatualizada/errada,  por favor entre em contato comigo</h3>
+          </div>
+          <div class="icons">
+            <a target="_blank" href="https://www.instagram.com/dev._.yuri/" class="icon-link icon--instagram">
+              <i class="ri-instagram-line contato-icon"></i>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/yuri-hostins-650461252/" class="icon-link icon--linkedin">
+              <i class="ri-linkedin-line contato-icon"></i>
+            </a>
+            <a target="_blank" href="https://github.com/Yuri-Hostins" class="icon-link icon--github">
+              <i class="ri-github-line contato-icon"></i>
+            </a>
+            <a target="_blank" href="https://wa.me/554797155070?text=Quero%20Reportar%20Um%20Bug%20Ou%20Entrar%20Em%20Contato" class="icon-link icon--whatsapp">
+              <i class="ri-whatsapp-line contato-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
     
+    
+
 
     <!-- Caixa de informação  -->
     <div class="info_box">
       <div class="info-title"><span>Regras deste Quiz Game</span></div>
       <div class="info-list">
         <div class="info">
-          1-) você só tem <span>15 segundos</span> por pergunta.
+          1-) você só tem <span>25 segundos</span> por pergunta.
         </div>
         <div class="info">
           2-) Depois de selecionar sua resposta, ela não pode ser desfeita.
@@ -58,7 +135,7 @@
         <div class="title">Gênio Quiz</div>
         <div class="timer">
           <div class="time_left_txt">Tempo restante</div>
-          <div class="timer_sec">15</div>
+          <div class="timer_sec">25</div>
         </div>
         <div class="time_line"></div>
       </header>

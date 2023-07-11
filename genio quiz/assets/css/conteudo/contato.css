@@ -1,0 +1,90 @@
+.titulo-contato{
+  margin: 2rem;
+  font-size: 1.25rem;
+}
+
+.icons {
+  display: flex;
+  column-gap: 25px;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.icon-link {
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+  font-size: 26px;
+  color: #1a1919;
+  border-radius: 50%;
+  outline: 2px solid #1a1919;
+  transition-property: outline-offset, outline-color, background-color;
+  transition-duration: 0.25s;
+}
+
+.icon-link:hover {
+  outline-offset: 4px;
+}
+
+.icon-link .contato-icon {
+  margin: auto;
+}
+
+.icon-link:hover .contato-icon {
+  animation: shake 0.25s;
+}
+
+.icon--instagram:hover {
+  background-image: radial-gradient(circle at 30% 107%,
+  #fdf497 0%,
+  #fdf497 5%,
+  #fd5949 45%,
+  #d6249f 60%,
+  #285aeb 90%);
+  outline-color: #a02d76;
+}
+
+.icon--linkedin:hover {
+  background-color: #0077b5;
+  outline-color: #0077b5;
+}
+
+.icon--github:hover {
+  background-image: radial-gradient(circle at 30% 107%,
+  #14171A 0%,
+  #14171A 5%,
+  #AAB8C2 45%,
+   #657786 60%,
+  #14171A 90%);
+  outline-color: #657786;
+}
+
+.icon--whatsapp:hover {
+  background-image: radial-gradient(circle at 30% 107%,
+  #128C7E 0%,
+  #128C7E 5%,
+  #075E54 45%,
+  #25D366 60%,
+  #34B7F1 90%);
+  outline-color: #075E54;
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(15deg);
+  }
+
+  20% {
+    transform: rotate(-15deg);
+  }
+
+  30% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-15deg);
+  }
+}
