@@ -503,16 +503,6 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o meio de transporte favorito dos macacos na África?',
-    answer: "Hiena-risonha",
-    options: [
-      "Banana-táxi",
-      "Escalada de girafa",
-      "Swing aéreo",
-      "Carro de lama",
-    ],
-  },
-  {
     question: 'Qual é o animal da África que adora fazer piadas?',
     answer: "Macaco palhaço",
     options: [
