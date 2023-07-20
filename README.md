@@ -8,7 +8,7 @@ O Gênio Quiz é um projeto de um jogo educacional desenvolvido por Yuri Hostins
 
 O jogo foi construído utilizando HTML, CSS e JavaScript para criar uma experiência interativa e envolvente para os usuários.
 
-![Gênio Quiz Screenshot](https://github.com/Yuri-Hostins/Genio-Quiz/assets/107286916/e39d9b98-1a92-49cd-a6e4-3491ec81dd78)
+![Gênio Quiz Screenshot](https://github.com/Yuri-Hostins/Alguma-Coisa/blob/main/imagens/GenioQuiz.png)
 
 ## Instruções
 O jogo possui as seguintes instruções para os jogadores:
