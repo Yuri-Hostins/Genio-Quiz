@@ -1,4 +1,4 @@
-# Gênio Quiz
+# Gênio Quiz - Sobre a África
 
 > Status do projeto: Finalizado
 
@@ -7,6 +7,8 @@
 O Gênio Quiz é um projeto de um jogo educacional desenvolvido por Yuri Hostins e João Vitor. O objetivo do jogo é proporcionar uma experiência divertida e desafiadora para os jogadores, ao mesmo tempo em que incentiva o aprendizado e o desenvolvimento de habilidades. Cada pergunta cuidadosamente elaborada no Gênio Quiz visa testar os conhecimentos dos jogadores sobre a África.
 
 O jogo foi construído utilizando HTML, CSS e JavaScript para criar uma experiência interativa e envolvente para os usuários.
+
+![Gênio Quiz Screenshot](https://github.com/Yuri-Hostins/Genio-Quiz/assets/107286916/e39d9b98-1a92-49cd-a6e4-3491ec81dd78)
 
 ## Instruções
 O jogo possui as seguintes instruções para os jogadores:
