@@ -1,21 +1,21 @@
 // selecionando todos os elementos necessários
-const start_btn = document.querySelector(".start_btn button");
-const info_box = document.querySelector(".info_box");
-const exit_btn = info_box.querySelector(".buttons .quit");
-const continue_btn = info_box.querySelector(".buttons .restart");
-const quiz_box = document.querySelector(".quiz_box");
-const result_box = document.querySelector(".result_box");
-const option_list = document.querySelector(".option_list");
-const time_line = document.querySelector("header .time_line");
-const timeText = document.querySelector(".timer .time_left_txt");
-const timeCount = document.querySelector(".timer .timer_sec");
+const botaoComecar = document.querySelector(".botao-comecar button");
+const caixaInformacao = document.querySelector(".caixa-informacao");
+const botaoSair = caixaInformacao.querySelector(".botoes .sair");
+const botaoContinuar = caixaInformacao.querySelector(".botoes .reiniciar");
+const caixaQuiz = document.querySelector(".caixa-quiz");
+const caixaResultado = document.querySelector(".caixa-resultado");
+const listaOpcao = document.querySelector(".lista-opcao");
+const linhaTempo = document.querySelector("header .linha-tempo");
+const textoTempo = document.querySelector(".tempo .texto-esquerdo-tempo");
+const contagemTempo = document.querySelector(".tempo .tempo-segundo");
 
 // criando um array e passando o número, perguntas, opções e respostas
-let questions = [
+let perguntas = [
   { 
-    question: "Qual é o instrumento musical tradicional mais popular da África?",
-    answer: "Tambores",
-    options: [
+    pergunta: "Qual é o instrumento musical tradicional mais popular da África?",
+    alternativaCerta: "Tambores",
+    opcoes: [
       "Djembe",
       "Tambores",
       "Kalimba",
@@ -23,9 +23,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a dança tradicional mais conhecida da África?",
-    answer: "Guedra",
-    options: [
+    pergunta: "Qual é a dança tradicional mais conhecida da África?",
+    alternativaCerta: "Guedra",
+    opcoes: [
       "Guedra",
       "Salsa",
       "Yangko",
@@ -33,9 +33,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a religião predominante na maior parte da África?",
-    answer: "Muçulmanos",
-    options: [
+    pergunta: "Qual é a religião predominante na maior parte da África?",
+    alternativaCerta: "Muçulmanos",
+    opcoes: [
       "Ortodoxo",
       "Islamismo",
       "Hinduísmo",
@@ -43,9 +43,9 @@ let questions = [
     ],
   },
   {
-    question: "Quais são os nomes das máscaras tradicionais usadas em rituais e cerimônias na África?",
-    answer: "Kwele e Fang",
-    options: [
+    pergunta: "Quais são os nomes das máscaras tradicionais usadas em rituais e cerimônias na África?",
+    alternativaCerta: "Kwele e Fang",
+    opcoes: [
       "Tiki e Haka",
       "Bauta e Columbina",
       "Zanni e Arlecchino",
@@ -53,9 +53,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o estilo de arte popular originário da Nigéria, que utiliza cores vibrantes e padrões geométricos?",
-    answer: "Arte Naija",
-    options: [
+    pergunta: "Qual é o estilo de arte popular originário da Nigéria, que utiliza cores vibrantes e padrões geométricos?",
+    alternativaCerta: "Arte Naija",
+    opcoes: [
       "Arte Rupestre",
       "Arte Abstrata",
       "Arte Naija",
@@ -63,9 +63,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o maior deserto da África?",
-    answer: "Deserto do Saara",
-    options: [
+    pergunta: "Qual é o maior deserto da África?",
+    alternativaCerta: "Deserto do Saara",
+    opcoes: [
       "Deserto de Kalahari",
       "Deserto do Saara",
       "Deserto da Namíbia",
@@ -73,9 +73,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o maior lago da África?",
-    answer: "Lago Vitória",
-    options: [
+    pergunta: "Qual é o maior lago da África?",
+    alternativaCerta: "Lago Vitória",
+    opcoes: [
       "Lago Vitória",
       "Lago Tanganica",
       "Lago Niassa",
@@ -83,9 +83,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a montanha mais alta da África?",
-    answer: "Monte Kilimanjaro",
-    options: [
+    pergunta: "Qual é a montanha mais alta da África?",
+    alternativaCerta: "Monte Kilimanjaro",
+    opcoes: [
       "Monte Kilimanjaro",
       "Monte Quênia",
       "Monte Ruwenzori",
@@ -93,9 +93,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o rio mais longo da África?",
-    answer: "Rio Nilo",
-    options: [
+    pergunta: "Qual é o rio mais longo da África?",
+    alternativaCerta: "Rio Nilo",
+    opcoes: [
       "Rio Congo",
       "Rio Nilo",
       "Rio Zambeze",
@@ -103,9 +103,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano é conhecido como "o berço da humanidade" ?',
-    answer: "Botsuana",
-    options: [
+    pergunta: 'Qual país africano é conhecido como "o berço da humanidade" ?',
+    alternativaCerta: "Botsuana",
+    opcoes: [
       "Botsuana",
       "Quênia",
       "Sudão",
@@ -113,9 +113,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a maior reserva de vida selvagem da África?",
-    answer: "Parque Nacional Serengeti (Tanzânia)",
-    options: [
+    pergunta: "Qual é a maior reserva de vida selvagem da África?",
+    alternativaCerta: "Parque Nacional Serengeti (Tanzânia)",
+    opcoes: [
       "Parque Nacional Kruger (África do Sul)",
       "Reserva Masai Mara (Quênia)",
       "Parque Nacional Serengeti (Tanzânia)",
@@ -123,9 +123,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano é famoso por suas pirâmides antigas?",
-    answer: "Egito",
-    options: [
+    pergunta: "Qual país africano é famoso por suas pirâmides antigas?",
+    alternativaCerta: "Egito",
+    opcoes: [
       "Egito",
       "Sudão",
       "Nigéria",
@@ -133,9 +133,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a língua mais falada na África?",
-    answer: "Swahili",
-    options: [
+    pergunta: "Qual é a língua mais falada na África?",
+    alternativaCerta: "Swahili",
+    opcoes: [
       "Swahili",
       "Francês",
       "Inglês",
@@ -143,9 +143,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a cidade mais populosa da África?",
-    answer: "Lagos (Nigéria)",
-    options: [
+    pergunta: "Qual é a cidade mais populosa da África?",
+    alternativaCerta: "Lagos (Nigéria)",
+    opcoes: [
       "Cairo (Egito)",
       "Lagos (Nigéria)",
       "Kinshasa (República Democrática do Congo)",
@@ -153,9 +153,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é a maior economia da África?",
-    answer: "Nigéria",
-    options: [
+    pergunta: "Qual é a maior economia da África?",
+    alternativaCerta: "Nigéria",
+    opcoes: [
       "Nigéria",
       "África do Sul",
       "Egito",
@@ -163,9 +163,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o prato tradicional da culinária da Etiópia?",
-    answer: "Doro Wat",
-    options: [
+    pergunta: "Qual é o prato tradicional da culinária da Etiópia?",
+    alternativaCerta: "Doro Wat",
+    opcoes: [
       "Jollof Rice",
       "Hot Dog",
       "Doro Wat",
@@ -173,9 +173,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual é o famoso festival de música e artes realizado anualmente em Zanzibar?",
-    answer: "Festival de Sauti za Busara",
-    options: [
+    pergunta: "Qual é o famoso festival de música e artes realizado anualmente em Zanzibar?",
+    alternativaCerta: "Festival de Sauti za Busara",
+    opcoes: [
       "Festival de Lamu",
       "Festival de Lake of Stars",
       "Festival de Sauti za Busara",
@@ -183,9 +183,9 @@ let questions = [
     ],
   },
   {
-    question: "Á África é um:",
-    answer: "Um Continente",
-    options: [
+    pergunta: "Á África é um:",
+    alternativaCerta: "Um Continente",
+    opcoes: [
       "Um País",
       "Um Planeta",
       "Um Continente",
@@ -193,9 +193,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano tem uma bandeira verde, amarela e vermelha com uma estrela negra no centro?",
-    answer: "Gana",
-    options: [
+    pergunta: "Qual país africano tem uma bandeira verde, amarela e vermelha com uma estrela negra no centro?",
+    alternativaCerta: "Gana",
+    opcoes: [
       "Quênia",
       "Angola",
       "Etiópia",
@@ -203,9 +203,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano possui uma bandeira com as cores verde, amarelo e vermelho, e no centro um emblema de uma estrela amarela?",
-    answer: "Burkina Faso",
-    options: [
+    pergunta: "Qual país africano possui uma bandeira com as cores verde, amarelo e vermelho, e no centro um emblema de uma estrela amarela?",
+    alternativaCerta: "Burkina Faso",
+    opcoes: [
       "Burkina Faso",
       "Angola",
       "Quênia",
@@ -213,9 +213,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano possui uma bandeira composta por três faixas horizontais nas cores vermelho, amarelo e verde, com um triângulo preto no canto esquerdo?",
-    answer: "Camarões",
-    options: [
+    pergunta: "Qual país africano possui uma bandeira composta por três faixas horizontais nas cores vermelho, amarelo e verde, com um triângulo preto no canto esquerdo?",
+    alternativaCerta: "Camarões",
+    opcoes: [
       "Camarões",
       "Etiópia",
       "Burkina Faso",
@@ -223,9 +223,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano possui uma bandeira com as cores verde, amarelo e vermelho, e uma estrela de cinco pontas no centro?",
-    answer: "Etiópia",
-    options: [
+    pergunta: "Qual país africano possui uma bandeira com as cores verde, amarelo e vermelho, e uma estrela de cinco pontas no centro?",
+    alternativaCerta: "Etiópia",
+    opcoes: [
       "Gana",
       "Quênia",
       "África do Sul",
@@ -233,9 +233,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual país africano possui uma bandeira com três faixas horizontais nas cores vermelho, amarelo e verde, e um emblema de estrela e meia-lua no canto superior esquerdo?",
-    answer: "Mauritânia",
-    options: [
+    pergunta: "Qual país africano possui uma bandeira com três faixas horizontais nas cores vermelho, amarelo e verde, e um emblema de estrela e meia-lua no canto superior esquerdo?",
+    alternativaCerta: "Mauritânia",
+    opcoes: [
       "Senegal",
       "Mali",
       "Burkina Faso",
@@ -243,9 +243,9 @@ let questions = [
     ],
   },
   {
-    question: "Qual esporte é considerado o mais popular na África do Sul e foi um dos fatores importantes na superação do apartheid no país?",
-    answer: "Rugby",
-    options: [
+    pergunta: "Qual esporte é considerado o mais popular na África do Sul e foi um dos fatores importantes na superação do apartheid no país?",
+    alternativaCerta: "Rugby",
+    opcoes: [
       "Futebol",
       "Rugby",
       "Críquete",
@@ -253,9 +253,9 @@ let questions = [
     ],
   },
   {
-    question: 'Em qual país africano o esporte do "Kora" é popular, uma competição que envolve canoagem em pequenas embarcações de madeira?',
-    answer: "Senegal",
-    options: [
+    pergunta: 'Em qual país africano o esporte do "Kora" é popular, uma competição que envolve canoagem em pequenas embarcações de madeira?',
+    alternativaCerta: "Senegal",
+    opcoes: [
       "Senegal",
       "Tanzânia",
       "Angola",
@@ -263,9 +263,9 @@ let questions = [
     ],
   },
   {
-    question: 'Em qual país africano o esporte do "Mancala" é popular, um jogo de tabuleiro estratégico jogado com sementes ou pedras?',
-    answer: "Gana",
-    options: [
+    pergunta: 'Em qual país africano o esporte do "Mancala" é popular, um jogo de tabuleiro estratégico jogado com sementes ou pedras?',
+    alternativaCerta: "Gana",
+    opcoes: [
       "Egito",
       "Marrocosa",
       "África do Sul",
@@ -273,9 +273,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o país africano famoso por abrigar o Monte Kilimanjaro?',
-    answer: "Tanzânia",
-    options: [
+    pergunta: 'Qual é o país africano famoso por abrigar o Monte Kilimanjaro?',
+    alternativaCerta: "Tanzânia",
+    opcoes: [
       "Egito",
       "Uganda",
       "Tanzânia",
@@ -283,9 +283,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o animal mais rápido do mundo, encontrado na África?',
-    answer: "Guepardo",
-    options: [
+    pergunta: 'Qual é o animal mais rápido do mundo, encontrado na África?',
+    alternativaCerta: "Guepardo",
+    opcoes: [
       "Leão",
       "Elefante",
       "Guepardo",
@@ -293,9 +293,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é conhecido como "Rei da Selva"?',
-    answer: "Leão",
-    options: [
+    pergunta: 'Qual animal é conhecido como "Rei da Selva"?',
+    alternativaCerta: "Leão",
+    opcoes: [
       "Elefante",
       "Rinoceronte",
       "Girafa",
@@ -303,9 +303,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal possui dois chifre longo e curvado na cabeça?',
-    answer: "Órix-de-cimitarra",
-    options: [
+    pergunta: 'Qual animal possui dois chifre longo e curvado na cabeça?',
+    alternativaCerta: "Órix-de-cimitarra",
+    opcoes: [
       "Hipopótamo",
       "Seu Amigo",
       "Rinoceronte",
@@ -313,9 +313,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é conhecido por sua velocidade e habilidade de salto?',
-    answer: "Guepardo",
-    options: [
+    pergunta: 'Qual animal é conhecido por sua velocidade e habilidade de salto?',
+    alternativaCerta: "Guepardo",
+    opcoes: [
       "Zebra",
       "Leopardo",
       "Elefante",
@@ -323,9 +323,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é o maior mamífero terrestre?',
-    answer: "Elefante",
-    options: [
+    pergunta: 'Qual animal é o maior mamífero terrestre?',
+    alternativaCerta: "Elefante",
+    opcoes: [
       "Elefante",
       "Leopardo",
       "Leão",
@@ -333,9 +333,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é conhecido por sua tromba longa e flexível?',
-    answer: "Elefante",
-    options: [
+    pergunta: 'Qual animal é conhecido por sua tromba longa e flexível?',
+    alternativaCerta: "Elefante",
+    opcoes: [
       "Girafa",
       "Leopardo",
       "Rinoceronte",
@@ -343,9 +343,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é conhecido como "o assassino silencioso" por sua abordagem furtiva e ataques mortais?',
-    answer: "Crocodilo do Nilo",
-    options: [
+    pergunta: 'Qual animal é conhecido como "o assassino silencioso" por sua abordagem furtiva e ataques mortais?',
+    alternativaCerta: "Crocodilo do Nilo",
+    opcoes: [
       "Crocodilo do Nilo",
       "Leopardo",
       "Tubarão",
@@ -353,9 +353,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é responsável pelo maior número de mortes na África a cada ano?',
-    answer: "Hipopótamo",
-    options: [
+    pergunta: 'Qual animal é responsável pelo maior número de mortes na África a cada ano?',
+    alternativaCerta: "Hipopótamo",
+    opcoes: [
       "Leão",
       "Elefante",
       "Rinoceronte",
@@ -363,9 +363,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é considerado um dos mais venenosos do mundo e é encontrado em várias regiões da África?',
-    answer: "Hipopótamo",
-    options: [
+    pergunta: 'Qual animal é considerado um dos mais venenosos do mundo e é encontrado em várias regiões da África?',
+    alternativaCerta: "Cobra Mamba Negra",
+    opcoes: [
       "Mosquito",
       "Cobra Mamba Negra",
       "Escorpião",
@@ -373,9 +373,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal é conhecido por sua agressividade e por ser responsável por muitos ataques a seres humanos na África?',
-    answer: "Leão",
-    options: [
+    pergunta: 'Qual animal é conhecido por sua agressividade e por ser responsável por muitos ataques a seres humanos na África?',
+    alternativaCerta: "Leão",
+    opcoes: [
       "Leopardo",
       "Crocodilo do Nilo",
       "Rinoceronte",
@@ -383,9 +383,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual animal possui um veneno neurotóxico altamente letal e é temido na região da África Subsaariana?',
-    answer: "Mosca Tse-Tse",
-    options: [
+    pergunta: 'Qual animal possui um veneno neurotóxico altamente letal e é temido na região da África Subsaariana?',
+    alternativaCerta: "Mosca Tse-Tse",
+    opcoes: [
       "Mosca Tse-Tse",
       "Vespa-do-mar",
       "Escorpião Imperador",
@@ -393,9 +393,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano é conhecido como o maior produtor de petróleo do continente?',
-    answer: "Nigéria",
-    options: [
+    pergunta: 'Qual país africano é conhecido como o maior produtor de petróleo do continente?',
+    alternativaCerta: "Nigéria",
+    opcoes: [
       "Nigéria",
       "Líbia",
       "Argélia",
@@ -403,9 +403,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano é o maior exportador mundial de ouro?',
-    answer: "Gana",
-    options: [
+    pergunta: 'Qual país africano é o maior exportador mundial de ouro?',
+    alternativaCerta: "Gana",
+    opcoes: [
       "África do Sul",
       "Gana",
       "Tanzânia",
@@ -413,9 +413,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano é líder na produção e exportação de diamantes?',
-    answer: "Botsuana",
-    options: [
+    pergunta: 'Qual país africano é líder na produção e exportação de diamantes?',
+    alternativaCerta: "Botsuana",
+    opcoes: [
       "Botsuana",
       "África do Sul",
       "República Democrática do Congo",
@@ -423,9 +423,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano é conhecido por suas reservas de gás natural e é considerado um importante fornecedor para o mercado europeu?',
-    answer: "Argélia",
-    options: [
+    pergunta: 'Qual país africano é conhecido por suas reservas de gás natural e é considerado um importante fornecedor para o mercado europeu?',
+    alternativaCerta: "Argélia",
+    opcoes: [
       "Moçambique",
       "Egito",
       "Argélia",
@@ -433,9 +433,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual país africano tem a maior economia do continente e é membro do grupo BRICS?',
-    answer: "África do Sul",
-    options: [
+    pergunta: 'Qual país africano tem a maior economia do continente e é membro do grupo BRICS?',
+    alternativaCerta: "África do Sul",
+    opcoes: [
       "Moçambique",
       "África do Sul",
       "Egito",
@@ -443,9 +443,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o instrumento musical de cordas mais famoso da África Ocidental?',
-    answer: "Kora",
-    options: [
+    pergunta: 'Qual é o instrumento musical de cordas mais famoso da África Ocidental?',
+    alternativaCerta: "Kora",
+    opcoes: [
       "Djembe",
       "Kora",
       "Mbira",
@@ -453,9 +453,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o estilo de dança tradicional do povo Zulu, da África do Sul?',
-    answer: "Indlamu",
-    options: [
+    pergunta: 'Qual é o estilo de dança tradicional do povo Zulu, da África do Sul?',
+    alternativaCerta: "Indlamu",
+    opcoes: [
       "Hula",
       "Samba",
       "Kizomba",
@@ -463,9 +463,9 @@ let questions = [
     ],
   },
   {
-    question: 'Quem é o autor do famoso romance "Things Fall Apart" (O Mundo se Despedaça), que retrata a vida e cultura igbo na Nigéria?',
-    answer: "Chinua Achebe",
-    options: [
+    pergunta: 'Quem é o autor do famoso romance "Things Fall Apart" (O Mundo se Despedaça), que retrata a vida e cultura igbo na Nigéria?',
+    alternativaCerta: "Chinua Achebe",
+    opcoes: [
       "Chinua Achebe",
       "Wole Soyinka",
       "Ngugi wa Thiong'o",
@@ -473,9 +473,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o estilo de arte em que os artistas da tribo Ndebele, da África do Sul e Zimbábue, pintam padrões geométricos em casas e objetos?',
-    answer: "Ndebele Art",
-    options: [
+    pergunta: 'Qual é o estilo de arte em que os artistas da tribo Ndebele, da África do Sul e Zimbábue, pintam padrões geométricos em casas e objetos?',
+    alternativaCerta: "Ndebele Art",
+    opcoes: [
       "Batik",
       "Tingatinga",
       "Adinkra",
@@ -483,9 +483,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o festival anual realizado no Senegal, conhecido por sua celebração da música, dança e cultura africana?',
-    answer: "Festival de Saint-Louis",
-    options: [
+    pergunta: 'Qual é o festival anual realizado no Senegal, conhecido por sua celebração da música, dança e cultura africana?',
+    alternativaCerta: "Festival de Saint-Louis",
+    opcoes: [
       "Festival de Timbuktu",
       "Festival de Essaouira",
       "Festival de Fès",
@@ -493,9 +493,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o animal da África que sempre está pronto para uma festa?',
-    answer: "Hiena-risonha",
-    options: [
+    pergunta: 'Qual é o animal da África que sempre está pronto para uma festa?',
+    alternativaCerta: "Hiena-risonha",
+    opcoes: [
       "Hiena-risonha",
       "Elefante dançante",
       "Leão com senso de humor",
@@ -503,9 +503,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o animal da África que adora fazer piadas?',
-    answer: "Macaco palhaço",
-    options: [
+    pergunta: 'Qual é o animal da África que adora fazer piadas?',
+    alternativaCerta: "Macaco palhaço",
+    opcoes: [
       "Hipopótamo hilário",
       "Girafa engraçada",
       "Rinoceronte com senso de humor",
@@ -513,9 +513,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o propósito principal das máscaras africanas?',
-    answer: "Realizar rituais religiosos",
-    options: [
+    pergunta: 'Qual é o propósito principal das máscaras africanas?',
+    alternativaCerta: "Realizar rituais religiosos",
+    opcoes: [
       "Proteger o rosto contra o sol",
       "Realizar rituais religiosos",
       "Esconder a identidade do usuário",
@@ -523,9 +523,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o material comum usado na fabricação das máscaras africanas?',
-    answer: "Madeira",
-    options: [
+    pergunta: 'Qual é o material comum usado na fabricação das máscaras africanas?',
+    alternativaCerta: "Madeira",
+    opcoes: [
       "Madeira",
       "Metal",
       "Vidro",
@@ -533,9 +533,9 @@ let questions = [
     ],
   },
   {
-    question: 'As máscaras africanas são frequentemente usadas em qual tipo de evento?',
-    answer: "Funerais",
-    options: [
+    pergunta: 'As máscaras africanas são frequentemente usadas em qual tipo de evento?',
+    alternativaCerta: "Funerais",
+    opcoes: [
       "Casamentos",
       "Funerais",
       "Festas de aniversário",
@@ -543,9 +543,9 @@ let questions = [
     ],
   },
   {
-    question: 'Qual é o significado simbólico das máscaras africanas?',
-    answer: "Proteção contra espíritos malignos",
-    options: [
+    pergunta: 'Qual é o significado simbólico das máscaras africanas?',
+    alternativaCerta: "Proteção contra espíritos malignos",
+    opcoes: [
       "Proteção contra espíritos malignos",
       "Status social do usuário",
       "Expressão de emoções humanas",
@@ -553,9 +553,9 @@ let questions = [
     ],
   },
   {
-    question: 'Em qual região da África as máscaras são mais proeminentes na cultura?',
-    answer: "África Ocidental",
-    options: [
+    pergunta: 'Em qual região da África as máscaras são mais proeminentes na cultura?',
+    alternativaCerta: "África Ocidental",
+    opcoes: [
       "África Austral",
       "África Oriental",
       "África Ocidental",
@@ -564,248 +564,259 @@ let questions = [
   },
 ];
 
+let isMultijogador = false; // Variável para controlar se o jogo está no modo multijogador
+let jogadores = 1; // Número de jogadores, inicializado com 1
+
+// se o botão Um Jogador for clicado
+botaoComecar.onclick = () => {
+  caixaInformacao.classList.add("informacaoAtivo"); // mostrar info box
+  isMultijogador = false; // Definir o modo multijogador como falso
+};
+
 // se o botão startQuiz for clicado
-start_btn.onclick = () => {
-  info_box.classList.add("activeInfo"); // mostrar info box
+botaoComecar.onclick = () => {
+  caixaInformacao.classList.add("informacaoAtivo"); // mostrar info box
 };
 
 // se o botão exitQuiz for clicado
-exit_btn.onclick = () => {
-  info_box.classList.remove("activeInfo"); // esconder info box
+botaoSair.onclick = () => {
+  caixaInformacao.classList.remove("informacaoAtivo"); // esconder info box
 };
 
 // se o botão continueQuiz for clicado
-continue_btn.onclick = () => {
-  info_box.classList.remove("activeInfo"); // esconder info box
-  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
-  showQuetions(0); // chamando a função showQuestions
-  queCounter(1); // passando 1 parâmetro para queCounter
-  startTimer(25); // chamando a função startTimer
-  startTimerLine(0); // chamando a função startTimerLine
+botaoContinuar.onclick = () => {
+  caixaInformacao.classList.remove("informacaoAtivo"); // esconder info box
+  caixaQuiz.classList.add("quizAtivo"); // mostrar quiz box
+  mostrarPerguntas(0); // chamando a função showperguntas
+  contadorPerguntas(1); // passando 1 parâmetro para contadorPerguntas
+  iniciarTempo(20); // chamando a função iniciarTempo
+  iniciarLinhaTemporizador(0); // chamando a função iniciarLinhaTemporizador
 };
 
-let timeValue = 25;
-let que_count = 0;
-let que_numb = 1;
-let userScore = 0;
-let counter;
-let counterLine;
-let widthValue = 0;
+let tempoValor = 20;
+let contagemPerguntas = 0;
+let numeroPerguntas = 1;
+let pontoUsario = 0;
+let contador;
+let contadorLinha;
+let valorLargura = 0;
 
-const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
+const reinicioQuiz = caixaResultado.querySelector(".botoes .reiniciar");
+const sairQuiz = caixaResultado.querySelector(".botoes .sair");
+
+
 
 // se o botão restartQuiz for clicado
-restart_quiz.onclick = () => {
-  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
-  result_box.classList.remove("activeResult"); // esconder result box
-  timeValue = 25;
-  que_count = 0;
-  que_numb = 1;
-  userScore = 0;
-  widthValue = 0;
-  showQuetions(que_count); // chamando a função showQuestions
-  queCounter(que_numb); // passando o valor que_numb para queCounter
-  clearInterval(counter); // limpar counter
-  clearInterval(counterLine); // limpar counterLine
-  startTimer(timeValue); // chamando a função startTimer
-  startTimerLine(widthValue); // chamando a função startTimerLine
-  timeText.textContent = "Tempo Restante"; // alterar o texto de timeText para Tempo Restante
-  next_btn.classList.remove("show"); // esconder o botão next
+reinicioQuiz.onclick = () => {
+  caixaQuiz.classList.add("quizAtivo"); // mostrar quiz box
+  caixaResultado.classList.remove("resultadoAtivo"); // esconder result box
+  tempoValor = 20;
+  contagemPerguntas = 0;
+  numeroPerguntas = 1;
+  pontoUsario = 0;
+  valorLargura = 0;
+  mostrarPerguntas(contagemPerguntas); // chamando a função showperguntas
+  contadorPerguntas(numeroPerguntas); // passando o valor numeroPerguntas para contadorPerguntas
+  clearInterval(contador); // limpar contador
+  clearInterval(contadorLinha); // limpar contadorLinha
+  iniciarTempo(tempoValor); // chamando a função iniciarTempo
+  iniciarLinhaTemporizador(valorLargura); // chamando a função iniciarLinhaTemporizador
+  textoTempo.textContent = "Tempo Restante"; // alterar o texto de textoTempo para Tempo Restante
+  botaoProximo.classList.remove("mostrar"); // esconder o botão next
 };
 
 // se o botão quitQuiz for clicado
-quit_quiz.onclick = () => {
+sairQuiz.onclick = () => {
   window.location.reload(); // recarregar a página atual
 };
 
-const next_btn = document.querySelector("footer .next_btn");
-const bottom_ques_counter = document.querySelector("footer .total_que");
+const botaoProximo = document.querySelector(".footer-quiz .botao-proximo");
+const contadorPerguntasInferior = document.querySelector(".footer-quiz .perguntas-total");
 
 // se o botão Next Que for clicado
-next_btn.onclick = () => {
-  if (que_count < questions.length - 1) {
+botaoProximo.onclick = () => {
+  if (contagemPerguntas < perguntas.length - 1) {
     // se o contador de perguntas for menor que o comprimento total das perguntas
-    que_count++; // incrementar o valor do contador de perguntas
-    que_numb++; // incrementar o valor do contador de números das perguntas
-    showQuetions(que_count); // chamando a função showQuestions
-    queCounter(que_numb); // passando o valor do contador de números das perguntas para queCounter
-    clearInterval(counter); // limpar counter
-    clearInterval(counterLine); // limpar counterLine
-    startTimer(timeValue); // chamando a função startTimer
-    startTimerLine(widthValue); // chamando a função startTimerLine
-    timeText.textContent = "Tempo Restante"; // alterar o texto de timeText para Tempo Restante
-    next_btn.classList.remove("show"); // esconder o botão next
+    contagemPerguntas++; // incrementar o valor do contador de perguntas
+    numeroPerguntas++; // incrementar o valor do contador de números das perguntas
+    mostrarPerguntas(contagemPerguntas); // chamando a função showperguntas
+    contadorPerguntas(numeroPerguntas); // passando o valor do contador de números das perguntas para contadorPerguntas
+    clearInterval(contador); // limpar contador
+    clearInterval(contadorLinha); // limpar contadorLinha
+    iniciarTempo(tempoValor); // chamando a função iniciarTempo
+    iniciarLinhaTemporizador(valorLargura); // chamando a função iniciarLinhaTemporizador
+    textoTempo.textContent = "Tempo Restante"; // alterar o texto de textoTempo para Tempo Restante
+    botaoProximo.classList.remove("mostrar"); // esconder o botão next
   } else {
-    clearInterval(counter); // limpar counter
-    clearInterval(counterLine); // limar counterLine
-    showResult(); // chamando a função showResult
+    clearInterval(contador); // limpar contador
+    clearInterval(contadorLinha); // limar contadorLinha
+    mostrarResultado(); // chamando a função mostrarResultado
   }
 };
 
 // obtendo perguntas e opções do array
-function showQuetions(index) {
-  const que_text = document.querySelector(".que_text");
+function mostrarPerguntas(index) {
+  const textoPerguntas = document.querySelector(".texto-perguntas");
 
   // criando uma nova tag span e div para a pergunta e opção e passando o valor usando o índice do array
-  let que_tag =
+  let perguntasMarcada =
     "<span>" +
     (index + 1) +
     ". " +
-    questions[index].question +
+    perguntas[index].pergunta +
     "</span>";
-  let option_tag =
-    '<div class="option"><span>' +
-    questions[index].options[0] +
+  let opcaoMarcada =
+    '<div class="opcao"><span>' +
+    perguntas[index].opcoes[0] +
     "</span></div>" +
-    '<div class="option"><span>' +
-    questions[index].options[1] +
+    '<div class="opcao"><span>' +
+    perguntas[index].opcoes[1] +
     "</span></div>" +
-    '<div class="option"><span>' +
-    questions[index].options[2] +
+    '<div class="opcao"><span>' +
+    perguntas[index].opcoes[2] +
     "</span></div>" +
-    '<div class="option"><span>' +
-    questions[index].options[3] +
+    '<div class="opcao"><span>' +
+    perguntas[index].opcoes[3] +
     "</span></div>";
-  que_text.innerHTML = que_tag; // adicionando a nova tag span dentro de que_tag
-  option_list.innerHTML = option_tag; // adicionando a nova tag div dentro de option_tag
+  textoPerguntas.innerHTML = perguntasMarcada; // adicionando a nova tag span dentro de perguntasMarcada
+  listaOpcao.innerHTML = opcaoMarcada; // adicionando a nova tag div dentro de opcaoMarcada
 
-  const option = option_list.querySelectorAll(".option");
+  const opcao = listaOpcao.querySelectorAll(".opcao");
 
   // definindo o atributo onclick para todas as opções disponíveis
-  for (i = 0; i < option.length; i++) {
-    option[i].setAttribute("onclick", "optionSelected(this)");
+  for (i = 0; i < opcao.length; i++) {
+    opcao[i].setAttribute("onclick", "opcaoSelecionada(this)");
   }
 }
 
 // criando as novas tags div para os ícones
-let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
-let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
+let iconeCerto = '<div class="icone marcacao"><i class="fas fa-check"></i></div>';
+let iconeErrado = '<div class="icone cruzar"><i class="fas fa-times"></i></div>';
 
 // se o usuário clicar em uma opção
-function optionSelected(answer) {
-  clearInterval(counter); // limpar counter
-  clearInterval(counterLine); // limpar counterLine
-  let userAns = answer.textContent; // obtendo a opção selecionada pelo usuário
-  let correcAns = questions[que_count].answer; // obtendo a resposta correta do array
-  const allOptions = option_list.children.length; // obtendo todos os itens de opção
+function opcaoSelecionada(alternativaCerta) {
+  clearInterval(contador); // limpar contador
+  clearInterval(contadorLinha); // limpar contadorLinha
+  let usarioResposta = alternativaCerta.textContent; // obtendo a opção selecionada pelo usuário
+  let respostaCorreta = perguntas[contagemPerguntas].alternativaCerta; // obtendo a resposta correta do array
+  const todasOpcoes = listaOpcao.children.length; // obtendo todos os itens de opção
 
-  if (userAns == correcAns) {
+  if (usarioResposta == respostaCorreta) {
     // se a opção selecionada pelo usuário for igual à resposta correta do array
-    userScore += 1; // incrementar o valor do userScore em 1
-    answer.classList.add("correct"); // adicionar a cor verde à opção selecionada correta
-    answer.insertAdjacentHTML("beforeend", tickIconTag); // adicionar o ícone de marca de seleção à opção selecionada correta
+    pontoUsario += 1; // incrementar o valor do pontoUsario em 1
+    alternativaCerta.classList.add("correto"); // adicionar a cor verde à opção selecionada correta
+    alternativaCerta.insertAdjacentHTML("beforeend", iconeCerto); // adicionar o ícone de marca de seleção à opção selecionada correta
     console.log("Resposta Correta");
-    console.log("Suas respostas corretas = " + userScore);
+    console.log("Suas respostas corretas = " + pontoUsario);
   } else {
-    answer.classList.add("incorrect"); // adicionar a cor vermelha à opção selecionada correta
-    answer.insertAdjacentHTML("beforeend", crossIconTag); // adicionar o ícone de cruz à opção selecionada correta
+    alternativaCerta.classList.add("incorreto"); // adicionar a cor vermelha à opção selecionada correta
+    alternativaCerta.insertAdjacentHTML("beforeend", iconeErrado); // adicionar o ícone de cruz à opção selecionada correta
     console.log("Resposta Errada");
 
-    for (i = 0; i < allOptions; i++) {
-      if (option_list.children[i].textContent == correcAns) {
+    for (i = 0; i < todasOpcoes; i++) {
+      if (listaOpcao.children[i].textContent == respostaCorreta) {
         // se houver uma opção que corresponde à resposta do array
-        option_list.children[i].setAttribute("class", "option correct"); // adicionar a cor verde à opção correspondente
-        option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); // adicionar o ícone de marca de seleção à opção correspondente
+        listaOpcao.children[i].setAttribute("class", "opcao correto"); // adicionar a cor verde à opção correspondente
+        listaOpcao.children[i].insertAdjacentHTML("beforeend", iconeCerto); // adicionar o ícone de marca de seleção à opção correspondente
         console.log("Resposta correta selecionada automaticamente.");
       }
     }
   }
-  for (i = 0; i < allOptions; i++) {
-    option_list.children[i].classList.add("disabled"); // uma vez que o usuário selecionou uma opção, desabilitar todas as opções
+  for (i = 0; i < todasOpcoes; i++) {
+    listaOpcao.children[i].classList.add("disabled"); // uma vez que o usuário selecionou uma opção, desabilitar todas as opções
   }
-  next_btn.classList.add("show"); // mostrar o botão next se o usuário selecionar alguma opção
+  botaoProximo.classList.add("mostrar"); // mostrar o botão next se o usuário selecionar alguma opção
 }
 
-function showResult() {
-  info_box.classList.remove("activeInfo"); // esconder info box
-  quiz_box.classList.remove("activeQuiz"); // esconder quiz box
-  result_box.classList.add("activeResult"); // mostrar result box
-  const scoreText = result_box.querySelector(".score_text");
-  if (userScore > 3) {
+function mostrarResultado() {
+  caixaInformacao.classList.remove("informacaoAtivo"); // esconder info box
+  caixaQuiz.classList.remove("quizAtivo"); // esconder quiz box
+  caixaResultado.classList.add("resultadoAtivo"); // mostrar result box
+  const pontosTexto = caixaResultado.querySelector(".pontos-textos");
+  if (pontoUsario > 3) {
     // se o usuário acertar mais de 3 perguntas
     // criando uma nova tag span e passando o número de pontos do usuário e o número total de perguntas
     let scoreTag =
       "<span>Parabéns! Você acertou <p>" +
-      userScore +
+      pontoUsario +
       "</p> de <p>" +
-      questions.length +
+      perguntas.length +
       "</p></span>";
-    scoreText.innerHTML = scoreTag; // adicionando a nova tag span dentro de scoreText
-  } else if (userScore > 1) {
+    pontosTexto.innerHTML = scoreTag; // adicionando a nova tag span dentro de pontosTexto
+  } else if (pontoUsario > 1) {
     // se o usuário acertar mais de 1 pergunta
     let scoreTag =
       "<span>Legal! Você acertou <p>" +
-      userScore +
+      pontoUsario +
       "</p> de <p>" +
-      questions.length +
+      perguntas.length +
       "</p></span>";
-    scoreText.innerHTML = scoreTag;
+    pontosTexto.innerHTML = scoreTag;
   } else {
     // se o usuário acertar menos de 1 pergunta
     let scoreTag =
       "<span>Desculpe, você acertou apenas <p>" +
-      userScore +
+      pontoUsario +
       "</p> de <p>" +
-      questions.length +
+      perguntas.length +
       "</p></span>";
-    scoreText.innerHTML = scoreTag;
+    pontosTexto.innerHTML = scoreTag;
   }
 }
 
-function startTimer(time) {
-  counter = setInterval(timer, 1000);
+function iniciarTempo(time) {
+  contador = setInterval(timer, 1000);
   function timer() {
-    timeCount.textContent = time; // alterando o valor de timeCount com o valor de tempo
+    contagemTempo.textContent = time; // alterando o valor de contagemTempo com o valor de tempo
     time--; // decrementando o valor do tempo
     if (time < 9) {
       // se o tempo for menor que 9
-      let addZero = timeCount.textContent;
-      timeCount.textContent = "0" + addZero; // adicionar um 0 antes do valor do tempo
+      let addZero = contagemTempo.textContent;
+      contagemTempo.textContent = "0" + addZero; // adicionar um 0 antes do valor do tempo
     }
     if (time < 0) {
       // se o tempo for menor que 0
-      clearInterval(counter); // limpar counter
-      timeText.textContent = "Tempo Esgotado"; // alterar o texto de timeText para Tempo Esgotado
-      const allOptions = option_list.children.length; // obtendo todos os itens de opção
-      let correcAns = questions[que_count].answer; // obtendo a resposta correta do array
-      for (i = 0; i < allOptions; i++) {
-        if (option_list.children[i].textContent == correcAns) {
+      clearInterval(contador); // limpar contador
+      textoTempo.textContent = "Tempo Esgotado"; // alterar o texto de textoTempo para Tempo Esgotado
+      const todasOpcoes = listaOpcao.children.length; // obtendo todos os itens de opção
+      let respostaCorreta = perguntas[contagemPerguntas].alternativaCerta; // obtendo a resposta correta do array
+      for (i = 0; i < todasOpcoes; i++) {
+        if (listaOpcao.children[i].textContent == respostaCorreta) {
           // se houver uma opção que corresponde à resposta do array
-          option_list.children[i].setAttribute("class", "option correct"); // adicionar a cor verde à opção correspondente
-          option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); // adicionar o ícone de marca de seleção à opção correspondente
+          listaOpcao.children[i].setAttribute("class", "opcao correto"); // adicionar a cor verde à opção correspondente
+          listaOpcao.children[i].insertAdjacentHTML("beforeend", iconeCerto); // adicionar o ícone de marca de seleção à opção correspondente
           console.log("Tempo Esgotado: Resposta corretaselecionada automaticamente.");
         }
       }
-      for (i = 0; i < allOptions; i++) {
-        option_list.children[i].classList.add("disabled"); // uma vez que o usuário selecionou uma opção, desabilitar todas as opções
+      for (i = 0; i < todasOpcoes; i++) {
+        listaOpcao.children[i].classList.add("disabled"); // uma vez que o usuário selecionou uma opção, desabilitar todas as opções
       }
-      next_btn.classList.add("show"); // mostrar o botão next se o usuário selecionar alguma opção
+      botaoProximo.classList.add("mostrar"); // mostrar o botão next se o usuário selecionar alguma opção
     }
   }
 }
 
-function startTimerLine(time) {
-  counterLine = setInterval(timer, 47);
+function iniciarLinhaTemporizador(time) {
+  contadorLinha = setInterval(timer, 47);
   function timer() {
     time += 1; // incrementar o valor do tempo em 1
-    time_line.style.width = time + "px"; // aumentar a largura da time_line com px pelo valor do tempo
+    linhaTempo.style.width = time + "px"; // aumentar a largura da linhaTempo com px pelo valor do tempo
     
     // Verificar a largura da tela
     if (window.innerWidth < 600) {
-      clearInterval(counterLine); // Limpar counterLine
+      clearInterval(contadorLinha); // Limpar contadorLinha
     }
     
     if (time > 549) {
       // se o valor do tempo for maior que 549
-      clearInterval(counterLine); // limpar counterLine
+      clearInterval(contadorLinha); // limpar contadorLinha
     }
   }
 }
 
 
 // Função para embaralhar o array de perguntas
-function shuffleQuestions(array) {
+function embaralharPerguntas(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
@@ -813,49 +824,52 @@ function shuffleQuestions(array) {
 }
 
 // Função para gerar um conjunto aleatório de perguntas do conjunto maior
-function generateRandomQuestions() {
-  shuffleQuestions(questions); // Embaralhar as perguntas
-  return questions.slice(0, 10); // Selecionar as primeiras 10 perguntas
+function gerarPerguntasAleatorias() {
+  embaralharPerguntas(perguntas); // Embaralhar as perguntas
+  return perguntas.slice(0, 10); // Selecionar as primeiras 10 perguntas
 }
 
 // se o botão continueQuiz for clicado
-continue_btn.onclick = () => {
-  info_box.classList.remove("activeInfo"); // esconder info box
-  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
-  questions = generateRandomQuestions(); // Gerar um conjunto aleatório de perguntas
-  showQuetions(0); // chamando a função showQuestions
-  queCounter(1); // passando 1 parâmetro para queCounter
-  startTimer(25); // chamando a função startTimer
-  startTimerLine(0); // chamando a função startTimerLine
+botaoContinuar.onclick = () => {
+  caixaInformacao.classList.remove("informacaoAtivo"); // esconder info box
+  caixaQuiz.classList.add("quizAtivo"); // mostrar quiz box
+  perguntas = gerarPerguntasAleatorias(); // Gerar um conjunto aleatório de perguntas
+  mostrarPerguntas(0); // chamando a função showperguntas
+  contadorPerguntas(1); // passando 1 parâmetro para contadorPerguntas
+  iniciarTempo(20); // chamando a função iniciarTempo
+  iniciarLinhaTemporizador(0); // chamando a função iniciarLinhaTemporizador
 };
 
 // se o botão restartQuiz for clicado
-restart_quiz.onclick = () => {
-  quiz_box.classList.add("activeQuiz"); // mostrar quiz box
-  result_box.classList.remove("activeResult"); // esconder result box
-  timeValue = 25;
-  que_count = 0;
-  que_numb = 1;
-  userScore = 0;
-  widthValue = 0;
-  questions = generateRandomQuestions(); // Gerar um conjunto aleatório de perguntas
-  showQuetions(que_count); // chamando a função showQuestions
-  queCounter(que_numb); // passando o valor que_numb para queCounter
-  clearInterval(counter); // limpar counter
-  clearInterval(counterLine); // limpar counterLine
-  startTimer(timeValue); // chamando a função startTimer
-  startTimerLine(widthValue); // chamando a função startTimerLine
-  timeText.textContent = "Tempo Restante"; // alterar o texto de timeText para Tempo Restante
-  next_btn.classList.remove("show"); // esconder o botão next
+reinicioQuiz.onclick = () => {
+  caixaQuiz.classList.add("quizAtivo"); // mostrar quiz box
+  caixaResultado.classList.remove("resultadoAtivo"); // esconder result box
+  tempoValor = 20;
+  contagemPerguntas = 0;
+  numeroPerguntas = 1;
+  pontoUsario = 0;
+  valorLargura = 0;
+  perguntas = gerarPerguntasAleatorias(); // Gerar um conjunto aleatório de perguntas
+  mostrarPerguntas(contagemPerguntas); // chamando a função showperguntas
+  contadorPerguntas(numeroPerguntas); // passando o valor numeroPerguntas para contadorPerguntas
+  clearInterval(contador); // limpar contador
+  clearInterval(contadorLinha); // limpar contadorLinha
+  iniciarTempo(tempoValor); // chamando a função iniciarTempo
+  iniciarLinhaTemporizador(valorLargura); // chamando a função iniciarLinhaTemporizador
+  textoTempo.textContent = "Tempo Restante"; // alterar o texto de textoTempo para Tempo Restante
+  botaoProximo.classList.remove("mostrar"); // esconder o botão next
 };
 
-function queCounter(index) {
+function contadorPerguntas(index) {
   // criando uma nova tag span e passando o número da pergunta e o número total de perguntas
   let totalQueCounTag =
     "<span><p>" +
     index +
     "</p> de <p>" +
-    questions.length +
+    perguntas.length +
     "</p> Perguntas</span>";
-  bottom_ques_counter.innerHTML = totalQueCounTag; // adicionando a nova tag span dentro de bottom_ques_counter
+  contadorPerguntasInferior.innerHTML = totalQueCounTag; // adicionando a nova tag span dentro de contadorPerguntasInferior
 }
+
+
+

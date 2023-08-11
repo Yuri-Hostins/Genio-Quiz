@@ -1,37 +1,37 @@
 // JavaScript para o modal
-var aboutModal = document.getElementById("about_modal");
-var aboutBtn = document.getElementById("about_btn");
-var aboutClose = document.getElementsByClassName("close")[0];
+var modalSobre = document.getElementById("modal-sobre");
+var botaoSobre = document.getElementById("botao-sobre");
+var fecharSobre = document.getElementsByClassName("fechar")[0];
 
-aboutBtn.addEventListener("click", function() {
-  aboutModal.style.display = "block";
+botaoSobre.addEventListener("click", function () {
+  modalSobre.style.display = "block";
 });
 
-aboutClose.addEventListener("click", function() {
-  aboutModal.style.display = "none";
+fecharSobre.addEventListener("click", function () {
+  modalSobre.style.display = "none";
 });
 
-window.addEventListener("click", function(event) {
-  if (event.target == aboutModal) {
-    aboutModal.style.display = "none";
+window.addEventListener("click", function (event) {
+  if (event.target == modalSobre) {
+    modalSobre.style.display = "none";
   }
 });
 
 // JavaScript para o modal de contato
-var contactModal = document.getElementById("contact_modal");
-var contactBtn = document.getElementById("contact_btn");
-var contactClose = document.getElementsByClassName("close")[1];
+var modalContato = document.getElementById("modal-contato");
+var botaoContato = document.getElementById("botao-contato");
+var fecharContato = document.getElementsByClassName("fechar")[1];
 
-contactBtn.addEventListener("click", function() {
-  contactModal.style.display = "block";
+botaoContato.addEventListener("click", function () {
+  modalContato.style.display = "block";
 });
 
-contactClose.addEventListener("click", function() {
-  contactModal.style.display = "none";
+fecharContato.addEventListener("click", function () {
+  modalContato.style.display = "none";
 });
 
-window.addEventListener("click", function(event) {
-  if (event.target == contactModal) {
-    contactModal.style.display = "none";
+window.addEventListener("click", function (event) {
+  if (event.target == modalContato) {
+    modalContato.style.display = "none";
   }
 });

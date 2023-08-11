@@ -6,9 +6,11 @@
     <title>Gênio Quiz</title>
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="shortcut icon" href="assets/img/favicon.png">
-    <script defer src="assets/js/menu.js"></script>
-    <script defer src="assets/js/modal.js"></script>
     <script defer src="assets/js/loading.js"></script>
+    <script defer src="assets/js/video.js"></script>
+    <script defer src="assets/js/menu.js"></script>
+    <script defer src="assets/js/multi.js"></script>
+    <script defer src="assets/js/modal.js"></script>
     <!-- Fonte Incrível CDN Link para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   </head>
@@ -28,148 +30,238 @@
         </div>
       </div>
     </section>
-
-
-    <!-- botão iniciar Quiz -->
-    <section class="container-buttons">
-      <h1>Bem-vindo ao Genio Quiz</h1>
-      <div class="start_btn">
-        <button>Começar Quiz</button>
-      </div>
-      <div class="buttons-infos">
-        <button id="about_btn">Sobre-nós</button>
-      </div>
-      <div class="buttons-infos">
-        <button id="contact_btn">Contato</button>
-      </div>
-    </section>
+    
+    
+    <div class="video-container" id="videoContainer"></div>
+    
   
-    <div id="about_modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Sobre-nós</h2>
-        <div class="info">
-          <p>
-            O Gênio Quiz foi desenvolvido por Yuri Hostins e João Vitor.
-          </p>
-        </div>  
-        <div class="info">
-          <p>
-            Nosso objetivo é proporcionar uma experiência divertida e desafiadora para os jogadores, ao mesmo tempo em que incentivamos o aprendizado e o desenvolvimento de habilidades.
-          </p>
+    <main>
+      <!-- botão iniciar Quiz -->
+      <section class="container-buttons">
+        <h1>Bem-vindo ao Gênio Quiz</h1>
+        <div id="umjogador" class="botao-comecar">
+          <button>Um Jogador</button>
         </div>
-        <div class="info">
-          <p>
-            Cada pergunta cuidadosamente elaborada no Gênio Quiz visa testar seus conhecimentos sobre nossa querida África
-          </p>
+        <div id="modo-multijogador" class="botao-multiplayer">
+          <button>Multijogador</button>
         </div>
-        <div class="info">
-          <p>
-            Agradecemos a todos os jogadores que embarcam nesta jornada intelectual conosco e desejamos a todos boa sorte em sua busca pelo título de "Gênio do Quiz"!
-          </p>
+        <div class="buttons-infos">
+          <button id="botao-sobre">Sobre-nós</button>
         </div>
-      </div>
-    </div>
-
-    <div id="contact_modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Contato</h2>
-        <div class="container" id="contato">
-          <div class="container--linha">
-            <div class="linha"></div>
-          </div>
-          <div>
-            <h3 class="titulo-contato">Caso houver algum bug em nosso site ou se tiver alguma informação desatualizada/errada,  por favor entre em contato comigo</h3>
-          </div>
-          <div class="icons">
-            <a target="_blank" href="https://www.instagram.com/dev._.yuri/" class="icon-link icon--instagram">
-              <i class="ri-instagram-line contato-icon"></i>
-            </a>
-            <a target="_blank" href="https://www.linkedin.com/in/yuri-hostins-650461252/" class="icon-link icon--linkedin">
-              <i class="ri-linkedin-line contato-icon"></i>
-            </a>
-            <a target="_blank" href="https://github.com/Yuri-Hostins" class="icon-link icon--github">
-              <i class="ri-github-line contato-icon"></i>
-            </a>
-            <a target="_blank" href="https://wa.me/554797155070?text=Quero%20Reportar%20Um%20Bug%20Ou%20Entrar%20Em%20Contato" class="icon-link icon--whatsapp">
-              <i class="ri-whatsapp-line contato-icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-
-
-    <!-- Caixa de informação  -->
-    <div class="info_box">
-      <div class="info-title"><span>Regras deste Quiz Game</span></div>
-      <div class="info-list">
-        <div class="info">
-          1-) você só tem <span>25 segundos</span> por pergunta.
-        </div>
-        <div class="info">
-          2-) Depois de selecionar sua resposta, ela não pode ser desfeita.
-        </div>
-        <div class="info">
-          3-) Você não pode selecionar nenhuma opção quando o tempo acabar.
-        </div>
-        <div class="info">
-          4-) Você não pode sair do Quiz Game enquanto estiver jogando.
-        </div>
-        <div class="info">
-          5-) Você receberá pontos com base em suas respostas corretas.
-        </div>
-      </div>
-      <div class="buttons">
-        <button class="quit">Sair do Quiz</button>
-        <button class="restart">Continuar</button>
-      </div>
-    </div>
-
-    <!-- Caixa de perguntas -->
-    <div class="quiz_box">
-      <header>
-        <div class="title">Gênio Quiz</div>
-        <div class="timer">
-          <div class="time_left_txt">Tempo restante</div>
-          <div class="timer_sec">25</div>
-        </div>
-        <div class="time_line"></div>
-      </header>
-      <section>
-        <div class="que_text">
-          <!-- Aqui eu inseri a pergunta do JavaScript -->
-        </div>
-        <div class="option_list">
-          <!-- Aqui eu inseri a pergunta do JavaScript -->
+        <div class="buttons-infos">
+          <button id="botao-contato">Contato</button>
         </div>
       </section>
-
-      <!-- rodapé da caixa de perguntas -->
-      <footer>
-        <div class="total_que">
-          <!-- Aqui inseri o número de contagem de perguntas do JavaScript -->
+    
+      <div id="modal-sobre" class="modal">
+        <div class="modal-content">
+          <span class="fechar">&times;</span>
+          <h2>Sobre-nós</h2>
+          <div class="informacao">
+            <p>
+              O Gênio Quiz foi desenvolvido por Yuri Hostins e João Vitor.
+            </p>
+          </div>  
+          <div class="informacao">
+            <p>
+              Nosso objetivo é proporcionar uma experiência divertida e desafiadora para os jogadores, ao mesmo tempo em que incentivamos o aprendizado e o desenvolvimento de habilidades.
+            </p>
+          </div>
+          <div class="informacao">
+            <p>
+              Cada pergunta cuidadosamente elaborada no Gênio Quiz visa testar seus conhecimentos sobre nossa querida África
+            </p>
+          </div>
+          <div class="informacao">
+            <p>
+              Agradecemos a todos os jogadores que embarcam nesta jornada intelectual conosco e desejamos a todos boa sorte em sua busca pelo título de "Gênio do Quiz"!
+            </p>
+          </div>
         </div>
-        <button class="next_btn">Próximo teste</button>
-      </footer>
-    </div>
+      </div>
 
-    <!-- Caixa de resultados -->
-    <div class="result_box">
-      <div class="icon">
-        <i class="fas fa-crown"></i>
+      <div id="modal-contato" class="modal">
+        <div class="modal-content">
+          <span class="fechar">&times;</span>
+          <h2>Contato</h2>
+          <div class="container" id="contato">
+            <div class="container--linha">
+              <div class="linha"></div>
+            </div>
+            <div>
+              <h3 class="titulo-contato">Caso houver algum bug em nosso site ou se tiver alguma informação desatualizada/errada,  por favor entre em contato comigo</h3>
+            </div>
+            <div class="icons">
+              <a target="_blank" href="https://www.instagram.com/dev._.yuri/" class="icon-link icon--instagram">
+                <i class="ri-instagram-line contato-icon"></i>
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/yuri-hostins-650461252/" class="icon-link icon--linkedin">
+                <i class="ri-linkedin-line contato-icon"></i>
+              </a>
+              <a target="_blank" href="https://github.com/Yuri-Hostins" class="icon-link icon--github">
+                <i class="ri-github-line contato-icon"></i>
+              </a>
+              <a target="_blank" href="https://wa.me/554797155070?text=Quero%20Reportar%20Um%20Bug%20Ou%20Entrar%20Em%20Contato" class="icon-link icon--whatsapp">
+                <i class="ri-whatsapp-line contato-icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="complete_text">Você concluiu o Quiz!</div>
-      <div class="score_text">
-        <!-- Aqui inseri o resultado da pontuação do JavaScript -->
+      
+      <!-- Caixa de informação  -->
+      <div class="caixa-informacao">
+        <div class="titulo-informacao"><span>Regras deste Quiz Game</span></div>
+        <div class="lista-informacao">
+          <div class="informacao">
+            1-) você só tem <span>20 segundos</span> por pergunta.
+          </div>
+          <div class="informacao">
+            2-) Depois de selecionar sua resposta, ela não pode ser desfeita.
+          </div>
+          <div class="informacao">
+            3-) Você não pode selecionar nenhuma opção quando o tempo acabar.
+          </div>
+          <div class="informacao">
+            4-) Você não pode sair do Quiz Game enquanto estiver jogando.
+          </div>
+          <div class="informacao">
+            5-) Você receberá pontos com base em suas respostas corretas.
+          </div>
+        </div>
+        <div class="botoes">
+          <button class="sair">Sair do Quiz</button>
+          <button class="reiniciar">Continuar</button>
+        </div>
       </div>
-      <div class="buttons">
-        <button class="restart">Replay Quiz</button>
-        <button class="quit">Sair do Quiz</button>
+
+      <!-- Caixa de perguntas -->
+      <div class="caixa-quiz" id="caixa-quiz-umjogador">
+        <header>
+          <div class="title">Gênio Quiz</div>
+          <div class="tempo">
+            <div class="texto-esquerdo-tempo">Tempo restante</div>
+            <div class="tempo-segundo">20</div>
+          </div>
+          <div class="linha-tempo"></div>
+        </header>
+        <section>
+          <div class="texto-perguntas">
+            <!-- Aqui eu inseri a pergunta do JavaScript -->
+          </div>
+          <div class="lista-opcao">
+            <!-- Aqui eu inseri a pergunta do JavaScript -->
+          </div>
+        </section>
+
+        <!-- rodapé da caixa de perguntas -->
+        <div class="footer-quiz">
+          <div class="perguntas-total">
+            <!-- Aqui inseri o número de contagem de perguntas do JavaScript -->
+          </div>
+          <button class="botao-proximo">Próximo teste</button>
+        </div>
       </div>
-    </div>
+
+      <!-- Caixa de resultados -->
+      <div class="caixa-resultado">
+        <div class="icone">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="texto-completo">Você concluiu o Quiz!</div>
+        <div class="pontos-textos">
+          <!-- Aqui inseri o resultado da pontuação do JavaScript -->
+        </div>
+        <div class="botoes">
+          <button class="reiniciar">Reiniciar Quiz</button>
+          <button class="sair">Sair do Quiz</button>
+        </div>
+      </div>
+      
+      <!-- Parte do multijogador -->
+
+    
+      <div class="caixa-informacao-multi ">
+        <div class="titulo-informacao-multi"><span>Regras deste Quiz Game</span></div>
+        <div class="lista-informacao-multi">
+          <div class="informacao-multi">
+            1-) vocês só terão <span>15 segundos</span> por pergunta.
+          </div>
+          <div class="informacao-multi">
+            2-) Depois de selecionar sua resposta, ela não pode ser desfeita.
+          </div>
+          <div class="informacao-multi">
+            3-) Você não pode selecionar nenhuma opção quando o tempo acabar.
+          </div>
+          <div class="informacao-multi">
+            4-) Você não pode sair do Quiz Game enquanto estiver jogando.
+          </div>
+          <div class="informacao-multi">
+            5-) Você receberá pontos com base em suas respostas corretas.
+          </div>
+        </div>
+        <div class="botoes-multi">
+          <button class="sair-multi">Sair do Quiz</button>
+          <button class="reiniciar-multi">Continuar</button>
+        </div>
+      </div>
+      
+      <!-- Modal para inserir os nomes dos jogadores -->
+      <div class="caixa-nomes-multi">
+        <input type="text" class="nomeJogador1" placeholder="Nome do Jogador 1">
+        <input type="text" class="nomeJogador2" placeholder="Nome do Jogador 2">
+        <button class="comecar-jogo" onclick="iniciarJogoMulti()">Começar Jogo</button>
+      </div>
+
+      <!-- Caixa de perguntas -->
+      <div class="caixa-quiz-multi">
+        <header>
+          <div class="title-multi">Gênio Quiz</div>
+          <div class="tempo-multi">
+            <div class="texto-esquerdo-tempo-multi">Tempo restante</div>
+            <div class="tempo-segundo-multi">15</div>
+          </div>
+          <div class="linha-tempo-multi"></div>
+        </header>
+        <section>
+          <div class="texto-perguntas-multi">
+            <!-- Aqui eu inseri a pergunta do JavaScript -->
+          </div>
+          <div class="lista-opcao-multi">
+            <!-- Aqui eu inseri a pergunta do JavaScript -->
+          </div>
+        </section>
+      
+        <!-- rodapé da caixa de perguntas -->
+        <div class="footer-quiz-multi">
+          <div class="perguntas-total-multi">
+            <!-- Aqui inseri o número de contagem de perguntas do JavaScript -->
+          </div>
+          <div class="turno-container">
+            <p id="turno-atual">A vez do jogador: <span id="turno"></span></p>
+          </div>
+          <button class="botao-proximo-multi">Próximo teste</button>
+        </div>
+      </div>
+      
+      <!-- Caixa de resultados -->
+      <div class="caixa-resultado-multi">
+        <div class="icone-multi">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="texto-completo-multi">Você concluiu o Quiz!</div>
+        <div class="pontos-textos-multi">
+          <!-- Aqui inseri o resultado da pontuação do JavaScript -->
+        </div>
+        <div class="botoes-multi">
+          <button class="reiniciar-multi">Reiniciar Quiz</button>
+          <button class="sair-multi">Sair do Quiz</button>
+        </div>
+      </div>
+    
+      
+
+
+    </main>
   </body>
 </html>
