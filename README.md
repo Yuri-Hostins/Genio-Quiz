@@ -1,6 +1,6 @@
 # Gênio Quiz - Sobre a África
 
-> Status do projeto: Finalizado
+> Status do projeto: Em desenvolvimento
 
 ## Descrição do Projeto
 
